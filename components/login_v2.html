@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <p id="message"></p>
+
+    <script src="login.js"></script>
+</body>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Retrieve user input
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Validate credentials 
+        if (validateCredentials(username, password)) {
+            document.getElementById('message').innerText = 'Login successful.';
+            
+        }
+        else if (username === "" || password === "") {
+            document.getElementById('message').innerText = 'Please fill out both the username and password boxes.';
+        }
+        else {
+            document.getElementById('message').innerText = 'Invalid username or password.';
+        }
+    });
+
+    // Function to validate credentials. REPLACE WHEN U LEARN HOW TO CONNECT TO SERVER
+    function validateCredentials(username, password) {
+        const validUsername = 'name';
+        const validPassword = 'password';
+
+        return username === validUsername && password === validPassword;
+    }
+
+</script>
+</html>
+
